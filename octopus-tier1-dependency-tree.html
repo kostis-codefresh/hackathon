@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Octopus Deploy — Tier 1 Resource Dependency Tree</title>
+<style>
+  :root {
+    color-scheme: light dark;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+    line-height: 1.55;
+    color: #1a1a1a;
+    background: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    body { color: #e5e5e5; background: #121212; }
+    table, th, td { border-color: #444 !important; }
+    .diagram-frame { background: #ffffff; } /* keep SVG on white so its own colors stay legible */
+    code { background: #2a2a2a; }
+  }
+  h1 { font-size: 1.6em; }
+  h2 { font-size: 1.25em; margin-top: 2em; border-bottom: 1px solid #8884; padding-bottom: 4px; }
+  .diagram-frame {
+    overflow-x: auto;
+    border: 1px solid #8884;
+    border-radius: 8px;
+    padding: 8px;
+    margin: 1.5em 0;
+  }
+  .diagram-frame svg { display: block; min-width: 1200px; width: 100%; height: auto; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 0.95em; }
+  th, td { border: 1px solid #8884; padding: 8px 10px; text-align: left; vertical-align: top; }
+  th { background: rgba(120,120,120,0.12); }
+  code { background: rgba(120,120,120,0.15); padding: 2px 5px; border-radius: 4px; }
+  .callout {
+    border-left: 4px solid #2563eb;
+    background: rgba(37,99,235,0.08);
+    padding: 10px 16px;
+    margin: 1em 0;
+    border-radius: 0 6px 6px 0;
+  }
+</style>
+</head>
+<body>
+
+<h1>Octopus Deploy — Tier 1 Resource Dependency Tree</h1>
+
+<p>Dependency map for the Tier 1 (dedicated MCP tool) resources: Spaces, Environments,
+Projects, Accounts, Certificates, Tenants, Variables, Feature Toggles, Branches,
+Runbooks, Releases, Deployments, Deployment Targets/Machines, Kubernetes Targets,
+Tasks, Interruptions, Events, and Current User.</p>
+
+<p><strong>Solid arrow</strong> = hard dependency (the parent must exist before the child can be created at all).
+<strong>Dashed arrow</strong> = soft dependency (optional — only needed if you scope/link to it).</p>
+
+<div class="diagram-frame">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1950 910" width="1950" height="910" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <marker id="arrowHard" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#111111"/>
+    </marker>
+    <marker id="arrowSoft" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#888888"/>
+    </marker>
+  </defs>
+
+  <style>
+    .node-rect { fill:#ffffff; stroke:#333333; stroke-width:1.5; }
+    .root-rect { fill:#dbeafe; stroke:#2563eb; stroke-width:2; }
+    .system-rect { fill:#f1f1f1; stroke:#888888; stroke-width:1.5; stroke-dasharray:6,3; }
+    .hard-edge { stroke:#111111; stroke-width:1.8; fill:none; marker-end:url(#arrowHard); }
+    .soft-edge { stroke:#888888; stroke-width:1.6; fill:none; stroke-dasharray:5,4; marker-end:url(#arrowSoft); }
+    .label { font-size:15px; fill:#111111; text-anchor:middle; dominant-baseline:middle; }
+    .label2 { font-size:13.5px; fill:#111111; text-anchor:middle; dominant-baseline:middle; }
+    .title { font-size:26px; font-weight:bold; text-anchor:middle; fill:#111111; }
+    .legend-text { font-size:14px; fill:#111111; }
+  </style>
+
+  <rect x="0" y="0" width="1950" height="910" fill="#ffffff"/>
+
+  <text x="975" y="35" class="title">Octopus Deploy — Tier 1 Resource Dependency Tree</text>
+
+  <!-- ===== EDGES (drawn first, under nodes) ===== -->
+  <line x1="975" y1="125" x2="200" y2="195" class="hard-edge"/>
+  <line x1="975" y1="125" x2="600" y2="195" class="hard-edge"/>
+  <line x1="975" y1="125" x2="1000" y2="195" class="hard-edge"/>
+  <line x1="975" y1="125" x2="1400" y2="195" class="hard-edge"/>
+  <line x1="975" y1="125" x2="1750" y2="195" class="hard-edge"/>
+
+  <line x1="1750" y1="245" x2="1270" y2="325" class="hard-edge"/>
+  <line x1="1750" y1="245" x2="1505" y2="325" class="hard-edge"/>
+  <line x1="1750" y1="245" x2="1740" y2="320" class="hard-edge"/>
+  <line x1="1750" y1="245" x2="490" y2="325" class="hard-edge"/>
+  <line x1="1750" y1="245" x2="720" y2="325" class="hard-edge"/>
+  <line x1="1750" y1="245" x2="995" y2="320" class="hard-edge"/>
+
+  <line x1="200" y1="245" x2="235" y2="320" class="hard-edge"/>
+  <line x1="200" y1="245" x2="995" y2="320" class="hard-edge"/>
+
+  <line x1="1400" y1="245" x2="995" y2="320" class="hard-edge"/>
+
+  <line x1="235" y1="380" x2="235" y2="450" class="hard-edge"/>
+  <line x1="490" y1="375" x2="490" y2="455" class="hard-edge"/>
+  <line x1="720" y1="375" x2="720" y2="455" class="hard-edge"/>
+
+  <path d="M200,245 L200,300 L405,300 L405,480" class="hard-edge"/>
+  <path d="M200,245 L200,310 L635,310 L635,480" class="hard-edge"/>
+
+  <line x1="720" y1="505" x2="605" y2="570" class="hard-edge"/>
+  <line x1="490" y1="505" x2="605" y2="570" class="hard-edge"/>
+
+  <line x1="605" y1="630" x2="460" y2="690" class="hard-edge"/>
+  <line x1="605" y1="630" x2="750" y2="690" class="hard-edge"/>
+
+  <line x1="200" y1="245" x2="1270" y2="325" class="soft-edge"/>
+  <line x1="1400" y1="245" x2="1270" y2="325" class="soft-edge"/>
+  <line x1="200" y1="245" x2="1505" y2="325" class="soft-edge"/>
+  <line x1="1400" y1="245" x2="1505" y2="325" class="soft-edge"/>
+
+  <line x1="600" y1="245" x2="235" y2="320" class="soft-edge"/>
+  <line x1="1000" y1="245" x2="235" y2="320" class="soft-edge"/>
+
+  <line x1="235" y1="380" x2="720" y2="455" class="soft-edge"/>
+
+  <path d="M1400,245 L1400,300 L805,300 L805,480" class="soft-edge"/>
+
+  <!-- ===== NODES ===== -->
+  <rect x="890" y="75" width="170" height="50" rx="8" ry="8" class="root-rect"/>
+  <text x="975" y="100" class="label">Space</text>
+
+  <rect x="1670" y="70" width="260" height="60" rx="8" ry="8" class="system-rect"/>
+  <text x="1800" y="91" class="label2">Current User</text>
+  <text x="1800" y="109" class="label2">(pre-existing, not created)</text>
+
+  <rect x="115" y="195" width="170" height="50" rx="8" ry="8" class="node-rect"/>
+  <text x="200" y="220" class="label">Environments</text>
+
+  <rect x="515" y="195" width="170" height="50" rx="8" ry="8" class="node-rect"/>
+  <text x="600" y="220" class="label">Accounts</text>
+
+  <rect x="915" y="195" width="170" height="50" rx="8" ry="8" class="node-rect"/>
+  <text x="1000" y="220" class="label">Certificates</text>
+
+  <rect x="1315" y="195" width="170" height="50" rx="8" ry="8" class="node-rect"/>
+  <text x="1400" y="220" class="label">Tenants</text>
+
+  <rect x="1665" y="195" width="170" height="50" rx="8" ry="8" class="node-rect"/>
+  <text x="1750" y="220" class="label">Projects</text>
+
+  <rect x="125" y="320" width="220" height="60" rx="8" ry="8" class="node-rect"/>
+  <text x="235" y="341" class="label2">Deployment Targets /</text>
+  <text x="235" y="359" class="label2">Machines</text>
+
+  <rect x="405" y="325" width="170" height="50" rx="8" ry="8" class="node-rect"/>
+  <text x="490" y="350" class="label">Runbooks</text>
+
+  <rect x="635" y="325" width="170" height="50" rx="8" ry="8" class="node-rect"/>
+  <text x="720" y="350" class="label">Releases</text>
+
+  <rect x="865" y="320" width="260" height="60" rx="8" ry="8" class="node-rect"/>
+  <text x="995" y="341" class="label2">Tenant ↔ Project ↔</text>
+  <text x="995" y="359" class="label2">Environment Links</text>
+
+  <rect x="1185" y="325" width="170" height="50" rx="8" ry="8" class="node-rect"/>
+  <text x="1270" y="350" class="label">Variables</text>
+
+  <rect x="1415" y="325" width="180" height="50" rx="8" ry="8" class="node-rect"/>
+  <text x="1505" y="350" class="label">Feature Toggles</text>
+
+  <rect x="1655" y="320" width="170" height="60" rx="8" ry="8" class="node-rect"/>
+  <text x="1740" y="341" class="label2">Branches</text>
+  <text x="1740" y="359" class="label2">(Git-enabled projects)</text>
+
+  <rect x="140" y="450" width="190" height="60" rx="8" ry="8" class="node-rect"/>
+  <text x="235" y="471" class="label2">Kubernetes Targets</text>
+  <text x="235" y="489" class="label2">(subtype)</text>
+
+  <rect x="405" y="455" width="170" height="50" rx="8" ry="8" class="node-rect"/>
+  <text x="490" y="480" class="label">Runbook Runs</text>
+
+  <rect x="635" y="455" width="170" height="50" rx="8" ry="8" class="node-rect"/>
+  <text x="720" y="480" class="label">Deployments</text>
+
+  <rect x="510" y="570" width="190" height="60" rx="8" ry="8" class="system-rect"/>
+  <text x="605" y="591" class="label2">Tasks</text>
+  <text x="605" y="609" class="label2">(system-generated)</text>
+
+  <rect x="360" y="690" width="200" height="60" rx="8" ry="8" class="system-rect"/>
+  <text x="460" y="711" class="label2">Interruptions</text>
+  <text x="460" y="729" class="label2">(system-generated)</text>
+
+  <rect x="655" y="690" width="190" height="60" rx="8" ry="8" class="system-rect"/>
+  <text x="750" y="711" class="label2">Events</text>
+  <text x="750" y="729" class="label2">(system-generated)</text>
+
+  <line x1="150" y1="805" x2="230" y2="805" class="hard-edge"/>
+  <text x="245" y="810" class="legend-text">Hard dependency (required to create)</text>
+
+  <line x1="150" y1="838" x2="230" y2="838" class="soft-edge"/>
+  <text x="245" y="843" class="legend-text">Soft dependency (optional scoping / linking)</text>
+
+  <rect x="150" y="858" width="60" height="24" rx="5" ry="5" class="system-rect"/>
+  <text x="245" y="874" class="legend-text">System-generated / pre-existing (not created directly)</text>
+</svg>
+</div>
+
+<h2>Hard vs. soft dependencies</h2>
+<table>
+<tr><th>Resource</th><th>Hard dependency (required to create)</th><th>Soft dependency (optional scoping/linking)</th></tr>
+<tr><td>Environments</td><td>Space</td><td>—</td></tr>
+<tr><td>Accounts</td><td>Space</td><td>—</td></tr>
+<tr><td>Certificates</td><td>Space</td><td>—</td></tr>
+<tr><td>Tenants</td><td>Space</td><td>—</td></tr>
+<tr><td>Projects</td><td>Space (uses auto-default Lifecycle)</td><td>—</td></tr>
+<tr><td>Variables</td><td>Project</td><td>Environments, Machines, Tenants, Channels (for scoped values)</td></tr>
+<tr><td>Feature Toggles</td><td>Project</td><td>Environments, Tenants, Tenant Tags/Segments (for scoped toggles)</td></tr>
+<tr><td>Branches</td><td>Project (with Git version control enabled)</td><td>—</td></tr>
+<tr><td>Runbooks</td><td>Project</td><td>—</td></tr>
+<tr><td>Runbook Runs</td><td>Runbook (published) + Environment</td><td>—</td></tr>
+<tr><td>Releases</td><td>Project + Deployment Process</td><td>—</td></tr>
+<tr><td>Deployment Targets / Machines</td><td>Environment</td><td>Accounts, Certificates (only for target types needing cloud/cert auth)</td></tr>
+<tr><td>Kubernetes Targets</td><td>Environment (subtype of Deployment Targets)</td><td>Accounts, Certificates (cluster auth)</td></tr>
+<tr><td>Deployments</td><td>Release + Environment</td><td>Deployment Targets (role matching), Tenants (tenanted deploys)</td></tr>
+<tr><td>Tenant↔Project↔Environment Links</td><td>Tenants + Projects + Environments</td><td>—</td></tr>
+<tr><td>Tasks</td><td colspan="2"><em>system-generated by Deployments/Runbook Runs — not created directly</em></td></tr>
+<tr><td>Interruptions</td><td colspan="2"><em>system-generated by Tasks needing manual intervention</em></td></tr>
+<tr><td>Events</td><td colspan="2"><em>system-generated byproduct of any action</em></td></tr>
+<tr><td>Current User</td><td colspan="2"><em>pre-existing authenticated identity — not created</em></td></tr>
+</table>
+
+<h2>Answers to the specific questions</h2>
+
+<div class="callout">
+<strong>Can you create variables before environments?</strong><br>
+Yes. Variables only hard-require a <strong>Project</strong>. Environments are only needed if you
+want to scope a variable's value to a specific environment — an unscoped (or
+channel-scoped) variable can be created with zero environments in the space.
+</div>
+
+<div class="callout">
+<strong>Can you have feature toggles without creating tenants first?</strong><br>
+Yes. Feature Toggles only hard-require a <strong>Project</strong>. Tenants are one optional
+scoping dimension (alongside Environments and Segments) — a global or
+environment-scoped toggle needs no tenants at all.
+</div>
+
+<h2>Notable non-obvious points</h2>
+<ul>
+<li>Environments don't gate <strong>Project</strong> creation — the default Lifecycle has no
+phase restrictions, so a Project can exist with zero Environments. Environments
+only become a hard blocker at <strong>Deployment</strong> time and at <strong>Deployment Target</strong>
+creation.</li>
+<li><strong>Accounts/Certificates</strong> aren't a blanket prerequisite for Deployment Targets —
+only for target types whose auth mechanism needs them (e.g. Azure/AWS targets,
+Kubernetes client-cert auth). A Listening/Polling Tentacle target needs neither.</li>
+<li><strong>Tasks, Interruptions, and Events</strong> aren't creatable resources — they're
+system-generated records that fall out of Deployments and Runbook Runs.</li>
+</ul>
+
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Octopus Deploy — AI, MCP &amp; Skills Blog Posts</title>
+<style>
+  :root {
+    --bg: #fafaf8;
+    --card-bg: #ffffff;
+    --text: #1a1a1a;
+    --muted: #5a5a5a;
+    --accent: #0b6e4f;
+    --accent-hover: #094f38;
+    --border: #e3e0d8;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 3rem 1.5rem;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 20px;
+    line-height: 1.5;
+  }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  h1 {
+    font-size: 2.6rem;
+    margin-bottom: 0.3em;
+  }
+  .subtitle {
+    color: var(--muted);
+    font-size: 1.2rem;
+    margin-bottom: 2.5rem;
+  }
+  h2 {
+    font-size: 1.7rem;
+    margin-top: 2.8rem;
+    margin-bottom: 0.6rem;
+    border-bottom: 3px solid var(--accent);
+    padding-bottom: 0.3rem;
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  li {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    padding: 1.1rem 1.4rem;
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+  }
+  li:hover {
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    transform: translateY(-1px);
+  }
+  a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.15rem;
+  }
+  a:hover {
+    color: var(--accent-hover);
+    text-decoration: underline;
+  }
+  .desc {
+    display: block;
+    margin-top: 0.35rem;
+    color: var(--muted);
+    font-size: 1rem;
+    font-weight: 400;
+  }
+  .note {
+    margin-top: 3rem;
+    padding: 1.2rem 1.4rem;
+    background: #fff8e6;
+    border: 1px solid #f0dfa8;
+    border-radius: 12px;
+    font-size: 1.05rem;
+    color: #5a4a1a;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>🐙 Octopus Deploy — AI Blog Roundup</h1>
+  <p class="subtitle">Posts about the Octopus MCP server, custom skills, and AI usage in Octopus Deploy.</p>
+
+  <h2>MCP Server &amp; Agentic AI</h2>
+  <ul>
+    <li>
+      <a href="https://octopus.com/blog/launching-octopus-mcp" target="_blank" rel="noopener">Launching The Octopus MCP Server</a>
+      <span class="desc">Introduces the Octopus MCP Server — lets AI assistants explore, inspect, and diagnose problems in your Octopus instance.</span>
+    </li>
+    <li>
+      <a href="https://octopus.com/blog/what-is-mcp" target="_blank" rel="noopener">What Is Model Context Protocol (MCP)?</a>
+      <span class="desc">Explains the open standard (originally from Anthropic) that connects AI assistants to external tools and data sources.</span>
+    </li>
+    <li>
+      <a href="https://octopus.com/blog/agentic-ai-with-mcp" target="_blank" rel="noopener">Agentic AI With Model Context Protocol (MCP)</a>
+      <span class="desc">Walks through building a simple agentic AI system using the Octopus MCP server.</span>
+    </li>
+    <li>
+      <a href="https://octopus.com/blog/mcp-timeout-retry" target="_blank" rel="noopener">Resilient AI Agents With MCP: Timeout And Retry Strategies</a>
+      <span class="desc">Covers adding timeout and retry strategies to AI agents for more reliable MCP-based workflows.</span>
+    </li>
+    <li>
+      <a href="https://octopus.com/blog/octopus-intelligence-integration-with-github-agent-hq" target="_blank" rel="noopener">Announcing The Octopus Intelligence Agent App Integration With GitHub</a>
+      <span class="desc">Octopus Intelligence in GitHub Agent HQ — combines the MCP server with specialized skills for automated workflows.</span>
+    </li>
+  </ul>
+
+  <h2>AI Agents (General)</h2>
+  <ul>
+    <li>
+      <a href="https://octopus.com/blog/advanced-ai-agents" target="_blank" rel="noopener">Manage Context Window Size With Advanced AI Agents</a>
+      <span class="desc">Techniques for handling context window limits when building more advanced AI agents.</span>
+    </li>
+    <li>
+      <a href="https://octopus.com/blog/ai-agent-sandboxes" target="_blank" rel="noopener">Sandboxing AI Agents</a>
+      <span class="desc">How to safely sandbox AI agents so they can act without unbounded risk.</span>
+    </li>
+  </ul>
+
+  <h2>Octopus AI Assistant</h2>
+  <ul>
+    <li>
+      <a href="https://octopus.com/blog/introducing-octopus-ai-assistant" target="_blank" rel="noopener">Introducing The Octopus AI Assistant</a>
+      <span class="desc">Covers custom prompts, AI-driven project creation, and deployment failure analysis.</span>
+    </li>
+    <li>
+      <a href="https://octopus.com/blog/octopus-ai" target="_blank" rel="noopener">Octopus AI Experiment</a>
+      <span class="desc">The original experiment: querying an Octopus space in plain English via an LLM integration.</span>
+    </li>
+  </ul>
+
+  <h2>Related (Not on octopus.com/blog)</h2>
+  <ul>
+    <li>
+      <a href="https://octopus.com/news/octopus-mcp-server" target="_blank" rel="noopener">Octopus MCP Server Now Available, Enabling Powerful, Secure AI Workflows</a>
+      <span class="desc">Press/news release announcing general availability of the Octopus MCP Server.</span>
+    </li>
+    <li>
+      <a href="https://octopus.com/docs/octopus-ai/mcp" target="_blank" rel="noopener">Octopus MCP — Documentation</a>
+      <span class="desc">Official docs for setting up and using the Octopus MCP Server.</span>
+    </li>
+    <li>
+      <a href="https://octopus.com/docs/octopus-ai" target="_blank" rel="noopener">AI-Powered DevOps With Octopus Deploy — Documentation</a>
+      <span class="desc">Overview docs for all AI-powered features in Octopus Deploy.</span>
+    </li>
+  </ul>
+
+  <p class="note">
+    No standalone blog post dedicated solely to "custom skills" was found — skills are currently discussed only
+    in the context of the Octopus Intelligence / GitHub Agent HQ integration post above.
+  </p>
+</div>
+</body>
+</html>
