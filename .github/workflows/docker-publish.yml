@@ -97,3 +97,28 @@ jobs:
         # This step uses the identity token to provision an ephemeral certificate
         # against the sigstore community Fulcio instance.
         run: echo "${TAGS}" | xargs -I {} cosign sign --yes {}@${DIGEST}
+
+      # Plain pushes to main use the Daily channel and the short commit SHA tag;
+      # v*.*.* tag pushes use the Release channel and the tag name itself.
+      - name: Determine Octopus channel and package version
+        id: octopus-release
+        run: |
+          if [ "${GITHUB_REF_TYPE}" = "tag" ]; then
+            echo "channel=Release" >> "$GITHUB_OUTPUT"
+            echo "package_version=${GITHUB_REF_NAME}" >> "$GITHUB_OUTPUT"
+          else
+            echo "channel=Daily" >> "$GITHUB_OUTPUT"
+            echo "package_version=$(git rev-parse --short HEAD)" >> "$GITHUB_OUTPUT"
+          fi
+
+      # https://github.com/OctopusDeploy/create-release-action
+      - name: Create Octopus release
+        uses: OctopusDeploy/create-release-action@v3
+        with:
+          server: ${{ secrets.OCTOPUS_SERVER_URL }}
+          api_key: ${{ secrets.OCTOPUS_API_KEY }}
+          space: Default
+          project: Hackathon
+          channel: ${{ steps.octopus-release.outputs.channel }}
+          package_version: ${{ steps.octopus-release.outputs.package_version }}
+          git_commit: ${{ github.sha }}

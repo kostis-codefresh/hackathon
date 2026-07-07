@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: hackathon
-          image: ghcr.io/kostis-codefresh/hackathon:main
+          image: ghcr.io/kostis-codefresh/hackathon:#{Octopus.Action.Package[hackathon].PackageVersion}
           ports:
             - containerPort: 8080
