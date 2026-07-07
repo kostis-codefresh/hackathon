@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hackathon
+  labels:
+    app: hackathon
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hackathon
+  template:
+    metadata:
+      labels:
+        app: hackathon
+    spec:
+      containers:
+        - name: hackathon
+          image: ghcr.io/kostis-codefresh/hackathon:main
+          ports:
+            - containerPort: 8080
