@@ -19,3 +19,11 @@ spec:
           image: ghcr.io/kostis-codefresh/hackathon:#{Octopus.Action.Package[hackathon].PackageVersion}
           ports:
             - containerPort: 8080
+          volumeMounts:
+            - name: settings
+              mountPath: /app/settings.yaml
+              subPath: settings.yaml
+      volumes:
+        - name: settings
+          configMap:
+            name: hackathon-settings
