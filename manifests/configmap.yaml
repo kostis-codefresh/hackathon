@@ -4,8 +4,8 @@ metadata:
   name: hackathon-settings
 data:
   settings.yaml: |
-    db-username: admin
-    db-password: changeme
-    db-name: app_db
-    paypal-gateway: sandbox
-    env-name: development
+    db-username: #{db-username}
+    db-password: #{db-password}
+    db-name: #{db-name}
+    paypal-gateway: #{paypal-gateway}
+    env-name: #{env-name}
