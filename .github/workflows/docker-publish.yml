@@ -113,7 +113,7 @@ jobs:
 
       # https://github.com/OctopusDeploy/create-release-action
       - name: Create Octopus release
-        uses: OctopusDeploy/create-release-action@v3
+        uses: OctopusDeploy/create-release-action@v4
         with:
           server: ${{ secrets.OCTOPUS_SERVER_URL }}
           api_key: ${{ secrets.OCTOPUS_API_KEY }}
